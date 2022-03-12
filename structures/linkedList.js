@@ -1,6 +1,6 @@
 // @ts-check
 
-class ListNode {
+export class ListNode {
     data = null;
     next = null;
     constructor(data, next = null){
@@ -9,7 +9,7 @@ class ListNode {
     }
 }
 
-class LinkedList {
+export class LinkedList {
     constructor(){
         this.head = null;
         this.tail = null;
@@ -107,37 +107,10 @@ class LinkedList {
         let current = this.head;
 
         while(current){
-            output.push(current);
+            output.push(current.data);
             current = current.next;
         }
 
         return output;
     }
 }
-
-const list = new LinkedList();
-
-list.append("first");
-list.append("second");
-list.append("third");
-
-/**
- * @param {LinkedList} list 
- */
-const convertLinkedList = (list) => {
-    let prev = null;
-    let current = list.head;
-
-    while(current){
-        let next = current.next;
-        current.next = prev;
-        prev = current;
-        current = next;
-        list[0] = prev;
-    }
-
-    return list;
-}
-
-console.log(convertLinkedList(list));
-// console.log(list.toArray())
