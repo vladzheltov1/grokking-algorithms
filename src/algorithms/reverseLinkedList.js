@@ -1,3 +1,5 @@
+// @ts-check
+
 import { LinkedList } from "../structures/linkedList";
 
 /**
@@ -17,3 +19,9 @@ export const reverseLinkedList = (list) => {
 
     return list;
 }
+
+const list = new LinkedList();
+
+list.append("first");
+
+console.log(list.toArray());

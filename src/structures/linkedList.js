@@ -18,15 +18,14 @@ export class LinkedList {
     append = (data) => {
         const node = new ListNode(data);
 
+        if(this.tail){
+            this.tail.next = node;
+        }
+
         if(!this.head){
             this.head = node;
         }
 
-        if(!this.tail){
-            this.tail = node;
-        }
-
-        this.tail.next = node;
         this.tail = node;
     }
 
@@ -59,12 +58,6 @@ export class LinkedList {
     }
 
     remove = (data) => {
-        const found = this.find(data);
-        
-        if(!found){
-            return;
-        }
-        
         if(!this.head){
             return;
         }
@@ -74,6 +67,7 @@ export class LinkedList {
         }
     
         let current = this.head.next;
+        
         while(current.next){
             if(current.next.data === data){
                 current.next = current.next.next;
@@ -99,10 +93,14 @@ export class LinkedList {
     } 
 
     /**
-     * @returns {Array<ListNode>} output
+     * @returns {Array<string>} output
      */
     toArray = () => {
         const output = [];
+
+        if(!this.head){
+            return [];
+        }
 
         let current = this.head;
 
@@ -112,5 +110,10 @@ export class LinkedList {
         }
 
         return output;
+    }
+
+    clear = () => {
+        this.head = null;
+        this.tail = null;
     }
 }
